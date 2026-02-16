@@ -1,10 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronLeft } from 'lucide-material-react'; // Wait, it should be lucide-react
-
-// Fixing imports first
-import { ChevronLeft as ChevronLeftIcon } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 
 const zeroData = {
     "1": {
@@ -51,7 +48,7 @@ const ZeroSaidaaDetail = () => {
             {/* Back Button */}
             <div className="container mx-auto py-6">
                 <Link to="/zero-saidaa" className="inline-flex items-center text-xs font-bold tracking-widest hover:text-green-600 transition-colors uppercase">
-                    <ChevronLeftIcon className="w-4 h-4 mr-1" />
+                    <ChevronLeft className="w-4 h-4 mr-1" />
                     Back to Zero-Saidaa
                 </Link>
             </div>
