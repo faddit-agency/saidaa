@@ -31,22 +31,18 @@ const Navbar = () => {
         <header
             className={cn(
                 'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-                scrolled || (isOpen && !isHome) ? 'py-2 bg-white shadow-sm' : 'py-0',
-                !isHome && 'bg-white',
-                isOpen && isHome && 'bg-[#181818]'
+                scrolled || isOpen ? (isHome ? 'bg-black/20' : 'bg-[#181818]') : 'bg-transparent',
+                'py-2'
             )}
         >
             <div className="container mx-auto flex items-center justify-between py-4">
-                {/* Logo - visible on mobile/other pages, hidden on home page desktop */}
+                {/* Logo - always white version */}
                 <Link
                     to="/"
-                    className={cn(
-                        "hover:opacity-80 transition-opacity",
-                        isHome ? (isOpen ? "flex" : "flex md:hidden") : "flex"
-                    )}
+                    className="hover:opacity-80 transition-opacity flex"
                 >
                     <img
-                        src={(!isHome && !isOpen) ? "/logo-black.png" : "/logo-white.png"}
+                        src="/logo-white.png"
                         alt="SAIDAA"
                         className="h-4"
                     />
@@ -59,11 +55,9 @@ const Navbar = () => {
                             key={item.name}
                             to={item.path}
                             className={cn(
-                                'text-sm font-medium transition-colors',
-                                isHome
-                                    ? 'hover:text-green-500 text-white/80'
-                                    : 'hover:text-green-600 text-muted-foreground',
-                                location.pathname === item.path && (isHome ? 'font-bold text-white' : 'font-bold text-foreground')
+                                'text-sm font-medium transition-colors hover:text-green-500',
+                                'text-white/80',
+                                location.pathname === item.path && 'font-bold text-white'
                             )}
                         >
                             {item.name}
@@ -73,7 +67,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className={cn("md:hidden p-2", (isHome || isOpen) ? "text-white ml-auto" : "text-foreground")}
+                    className="md:hidden p-2 text-white ml-auto"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
