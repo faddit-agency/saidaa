@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="py-12 px-4 md:px-8 lg:px-12 bg-white border-t border-border">
             <div className="max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
                 <div className="mb-8 md:mb-0">
-                    <img src="/logo-white.png" alt="SAIDAA" className="h-4 mb-4 mix-blend-difference" />
+                    <img src="/logo-white.png" alt="SAIDAA" className="h-4 mb-4" />
                     <p className="text-xs tracking-wider">© {new Date().getFullYear()} SAIDAA. All Rights Reserved.</p>
                 </div>
                 <div className="flex space-x-6">
