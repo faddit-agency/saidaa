@@ -190,14 +190,14 @@ const News = () => {
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                 </div>
-                                <div className="space-y-4">
-                                    <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                                <div className="space-y-2 md:space-y-4">
+                                    <p className="text-[9px] md:text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
                                         {item.date}
                                     </p>
-                                    <h2 className="text-xl font-bold leading-snug tracking-tight group-hover:text-green-600 transition-colors">
+                                    <h2 className="text-sm md:text-xl font-bold leading-snug tracking-tight group-hover:text-green-600 transition-colors">
                                         {item.title}
                                     </h2>
-                                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                                    <p className="text-[10px] md:text-sm text-muted-foreground leading-relaxed line-clamp-2 md:line-clamp-3">
                                         {item.description}
                                     </p>
                                     <div className="pt-2">

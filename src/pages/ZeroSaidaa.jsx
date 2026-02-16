@@ -71,11 +71,11 @@ const ZeroSaidaa = () => {
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                             </div>
-                            <h3 className="font-bold text-sm uppercase leading-tight tracking-tight">
+                            <h3 className="font-bold text-[11px] md:text-sm uppercase leading-tight tracking-tight">
                                 {item.title}
                             </h3>
                             {item.subtitle && (
-                                <p className="text-xs text-muted-foreground mt-1 uppercase">
+                                <p className="text-[9px] md:text-xs text-muted-foreground mt-1 uppercase">
                                     {item.subtitle}
                                 </p>
                             )}
