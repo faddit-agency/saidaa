@@ -91,15 +91,15 @@ const Saidaa = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 mb-16 text-sm leading-relaxed text-muted-foreground">
                             <div className="space-y-6">
                                 <p>
-                                    EFFEKT is an architecture and research collective on a mission to reconnect people with nature through design at every scale. We aim to transform complex, real-world challenges into designs that leave a lasting positive impact. By bridging research and design, we align data with lived experience, functionality with beauty, economic priorities with ecological responsibility, and hope with action.
+                                    SAIDAA is an architecture and research collective on a mission to reconnect people with nature through design at every scale. We aim to transform complex, real-world challenges into designs that leave a lasting positive impact. By bridging research and design, we align data with lived experience, functionality with beauty, economic priorities with ecological responsibility, and hope with action.
                                 </p>
                                 <p>
-                                    Led by Co-founders Sinus Lynge and Tue Hesselberg Foged, and joined in 2023 by partners Tine Lind Højgaard and Toni Rubio Soler, our design studio brings together over 50 purpose-driven experts: architects, designers, urban planners, landscape architects, and researchers who work holistically across borders, scales, and disciplines.
+                                    Led by Founder Johnyun Baek, our design studio brings together a purpose-driven team: architects, designers, urban planners, landscape architects, and researchers who work holistically across borders, scales, and disciplines.
                                 </p>
                             </div>
                             <div className="space-y-6">
                                 <p>
-                                    For over 20 years, we have worked with innovation and cross-sector partnerships to address some of the most pressing social and environmental challenges in the built environment – from a systemic perspective to the human scale. Our solutions are rooted in the communities and environments they serve – and shaped with care, so they can be both felt and measured.
+                                    For over 10 years, we have worked with innovation and cross-sector partnerships to address some of the most pressing social and environmental challenges in the built environment – from a systemic perspective to the human scale. Our solutions are rooted in the communities and environments they serve – and shaped with care, so they can be both felt and measured.
                                 </p>
                                 <p>
                                     We don't pretend to have all the answers, but we continue to push boundaries in our pursuit of design solutions that celebrate nature and meet society's needs without compromising the future.
