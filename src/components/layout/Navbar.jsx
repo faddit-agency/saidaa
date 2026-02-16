@@ -31,7 +31,9 @@ const Navbar = () => {
         <header
             className={cn(
                 'fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-2 shadow-sm',
-                isHome ? 'bg-transparent shadow-none' : 'bg-white'
+                isHome
+                    ? (isOpen ? 'bg-[#181818]' : 'bg-transparent shadow-none')
+                    : 'bg-white'
             )}
         >
             <div className="container mx-auto flex items-center justify-between py-4">
