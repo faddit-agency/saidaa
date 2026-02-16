@@ -63,13 +63,13 @@ const Saidaa = () => {
     return (
         <div className="container mx-auto pt-4 pb-24">
             {/* Sub-navigation */}
-            <div className="flex justify-end gap-8 mb-16 text-sm">
+            <div className="flex overflow-x-auto no-scrollbar md:justify-end gap-8 mb-16 text-sm pb-2">
                 {tabs.map((tab) => (
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
                         className={cn(
-                            'transition-colors hover:text-foreground',
+                            'transition-colors hover:text-foreground whitespace-nowrap uppercase tracking-widest',
                             activeTab === tab ? 'font-bold text-foreground' : 'text-muted-foreground'
                         )}
                     >
@@ -134,7 +134,7 @@ const Saidaa = () => {
                             <div className="lg:col-span-8 flex flex-col justify-between">
                                 <div>
                                     <h2 className="text-xl font-bold mb-1">{teamMembers[0].name}</h2>
-                                    <p className="text-xs text-muted-foreground mb-8 tracking-widest">{teamMembers[0].role}</p>
+                                    <p className="text-[10px] text-muted-foreground mb-8 tracking-[0.3em] uppercase">{teamMembers[0].role}</p>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[13px] leading-relaxed text-muted-foreground mb-12">
                                         <p>{teamMembers[0].bioEn}</p>

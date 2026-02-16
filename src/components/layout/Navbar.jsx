@@ -31,8 +31,9 @@ const Navbar = () => {
         <header
             className={cn(
                 'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-                scrolled ? 'py-2' : 'py-0',
-                !isHome && 'bg-white'
+                scrolled || (isOpen && !isHome) ? 'py-2 bg-white shadow-sm' : 'py-0',
+                !isHome && 'bg-white',
+                isOpen && isHome && 'bg-[#181818]'
             )}
         >
             <div className="container mx-auto flex items-center justify-between py-4">
@@ -41,10 +42,10 @@ const Navbar = () => {
                     to="/"
                     className={cn(
                         "hover:opacity-80 transition-opacity",
-                        isHome ? "flex md:hidden" : "flex"
+                        isHome ? (isOpen ? "flex" : "flex md:hidden") : "flex"
                     )}
                 >
-                    <img src="/logo-white.png" alt="SAIDAA" className="h-4" />
+                    <img src="/logo-white.png" alt="SAIDAA" className={cn("h-4", !isHome && !isOpen && "invert")} />
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -68,7 +69,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className={cn("md:hidden p-2", isHome ? "text-white ml-auto" : "text-foreground")}
+                    className={cn("md:hidden p-2", (isHome || isOpen) ? "text-white ml-auto" : "text-foreground")}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -79,19 +80,19 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="md:hidden absolute top-full left-0 right-0 bg-[#181818] text-white border-t border-white/10 shadow-xl overflow-hidden"
                     >
-                        <nav className="flex flex-col p-4 space-y-4">
+                        <nav className="flex flex-col p-6 space-y-6">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.name}
                                     to={item.path}
                                     className={cn(
-                                        'text-lg font-medium py-2 px-4 rounded-md hover:bg-muted transition-colors',
-                                        location.pathname === item.path && 'bg-muted'
+                                        'text-2xl font-bold tracking-tighter hover:text-green-500 transition-colors',
+                                        location.pathname === item.path ? 'text-green-500' : 'text-white/90'
                                     )}
                                     onClick={() => setIsOpen(false)}
                                 >

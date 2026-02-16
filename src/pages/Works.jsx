@@ -39,13 +39,13 @@ const Works = () => {
     return (
         <div className="container mx-auto pt-4 pb-8">
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-end gap-6 mb-12 text-sm uppercase tracking-wide">
+            <div className="flex overflow-x-auto no-scrollbar md:flex-wrap justify-start md:justify-end gap-6 mb-12 text-sm uppercase tracking-wide pb-2">
                 {categories.map((cat) => (
                     <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
                         className={cn(
-                            'hover:text-foreground transition-colors',
+                            'hover:text-foreground transition-colors whitespace-nowrap',
                             activeCategory === cat ? 'font-bold text-foreground underline decoration-2 underline-offset-4' : 'text-muted-foreground'
                         )}
                     >
