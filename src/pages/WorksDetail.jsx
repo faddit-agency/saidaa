@@ -75,7 +75,7 @@ const WorksDetail = () => {
 
                 {/* Content Section 1 */}
                 <div className="container mx-auto mb-24">
-                    <div className="max-w-4xl mx-auto">
+                    <div className="w-full">
                         <h2 className="text-2xl font-bold mb-8 uppercase tracking-tight">{project.sections[0].heading}</h2>
                         <div className="text-sm text-muted-foreground leading-[1.8] space-y-6">
                             {project.sections[0].content.split('\n\n').map((para, i) => (
@@ -98,7 +98,7 @@ const WorksDetail = () => {
 
                 {/* Content Section 2 */}
                 <div className="container mx-auto">
-                    <div className="max-w-4xl mx-auto">
+                    <div className="w-full">
                         <h2 className="text-2xl font-bold mb-8 uppercase tracking-tight">{project.sections[1].heading}</h2>
                         <div className="text-sm text-muted-foreground leading-[1.8] space-y-6">
                             {project.sections[1].content.split('\n\n').map((para, i) => (
