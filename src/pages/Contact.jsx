@@ -3,54 +3,109 @@ import { motion } from 'framer-motion';
 
 const Contact = () => {
     return (
-        <div className="container mx-auto pt-4 pb-8">
+        <div className="container mx-auto pt-4 pb-24">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
             >
-                <h1 className="text-3xl md:text-4xl font-bold mb-12 uppercase tracking-tight">CONTACT</h1>
+                {/* Top Image Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+                    <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop"
+                            alt="Team photo"
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                        />
+                    </div>
+                    <div className="aspect-[4/3] overflow-hidden md:mt-12">
+                        <img
+                            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2069&auto=format&fit=crop"
+                            alt="Office interior"
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                        />
+                    </div>
+                    <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
+                            alt="Workspace"
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                        />
+                    </div>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
-                    <div className="space-y-12">
-                        <div>
-                            <h2 className="text-xl font-bold mb-4">SEOUL OFFICE</h2>
-                            <address className="not-italic text-sm text-muted-foreground space-y-1">
-                                <p>123 Architecture Lane, Gangnam-gu</p>
-                                <p>Seoul, South Korea</p>
-                                <p className="pt-4 font-bold text-foreground">T: +82 (0)2 1234 5678</p>
-                                <p className="text-foreground">E: info@saidaa.com</p>
-                            </address>
+                {/* Contact Title */}
+                <h1 className="text-3xl font-bold mb-16 uppercase tracking-tight">Contact</h1>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
+                    {/* Left Columns - Stacked in MD */}
+                    <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div className="space-y-12">
+                            <div>
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4">Office</h3>
+                                <div className="text-sm text-muted-foreground space-y-1 leading-relaxed">
+                                    <p>SAIDAA Arklitekter ApS</p>
+                                    <p>Blågårdsgade 8, 2. sal</p>
+                                    <p>2200 København N</p>
+                                    <p className="pt-4 font-bold text-foreground">Tel.: (+45) 35 35 36 31</p>
+                                    <p className="text-foreground">E-mail: hello@saidaa.com</p>
+                                    <p>CVR no.: 3377 1304</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4">Business Development</h3>
+                                <div className="text-sm text-muted-foreground space-y-4">
+                                    <p>For new business and project inquiries, please contact:</p>
+                                    <div>
+                                        <p className="font-bold text-foreground">Jon Borberg</p>
+                                        <p>Business Development Manager</p>
+                                        <p className="text-foreground">jb@saidaa.com</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div>
-                            <h2 className="text-xl font-bold mb-4">NEW BUSINESS</h2>
-                            <p className="text-sm text-muted-foreground">
-                                For new project inquiries and collaborations:<br />
-                                <span className="text-foreground font-medium">projects@saidaa.com</span>
-                            </p>
-                        </div>
+                        <div className="space-y-12">
+                            <div>
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4">Bank</h3>
+                                <div className="text-sm text-muted-foreground space-y-1 leading-relaxed">
+                                    <p>Vestjysk Bank</p>
+                                    <p>Torvet 4-5</p>
+                                    <p>7620 Lemvig</p>
+                                    <p className="pt-4">Tel.: (+45) 96 63 20 00</p>
+                                    <p>Reg. no.: 7606</p>
+                                    <p>Account no.: 1427688</p>
+                                </div>
+                            </div>
 
-                        <div>
-                            <h2 className="text-xl font-bold mb-4">JOIN US</h2>
-                            <p className="text-sm text-muted-foreground">
-                                We are always looking for talented individuals.<br />
-                                <span className="text-foreground font-medium">careers@saidaa.com</span>
-                            </p>
+                            <div>
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4">Press & Communication</h3>
+                                <div className="text-sm text-muted-foreground space-y-4">
+                                    <p>For press and media inquiries, please contact:</p>
+                                    <div>
+                                        <p className="font-bold text-foreground">Liv Elbirk</p>
+                                        <p>Senior Communications Manager</p>
+                                        <p className="text-foreground">le@saidaa.com</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="grayscale">
-                        {/* Map Placeholder */}
-                        <div className="aspect-video bg-muted flex items-center justify-center border border-border">
-                            <span className="text-xs uppercase tracking-widest text-muted-foreground">Map Integration Coming Soon</span>
-                        </div>
-                        <div className="mt-8 aspect-square overflow-hidden">
-                            <img
-                                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop"
-                                alt="Office Space"
-                                className="w-full h-full object-cover"
-                            />
+                    {/* Right Column - Map Placeholder */}
+                    <div className="w-full">
+                        <div className="aspect-[4/3] bg-[#0c1a2c] flex items-center justify-center relative overflow-hidden group border border-border">
+                            {/* Simple SVG Map-like background */}
+                            <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 300">
+                                <path d="M50 50 L150 150 L250 50 L350 150" stroke="white" strokeWidth="1" fill="none" />
+                                <path d="M0 100 L400 100 M100 0 L100 300 M300 0 L300 300" stroke="white" strokeWidth="0.5" fill="none" />
+                                <circle cx="200" cy="150" r="10" fill="red" className="animate-pulse" />
+                            </svg>
+                            <div className="relative z-10 text-center p-6 bg-black/40 backdrop-blur-sm">
+                                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white underline decoration-red-500 underline-offset-8">Find us in Seoul</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
