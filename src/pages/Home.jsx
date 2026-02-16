@@ -48,17 +48,14 @@ const Home = () => {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="absolute left-0 top-0 h-full hidden md:flex items-center z-10"
             >
-                <h1
-                    className="text-[15vh] lg:text-[25vh] xl:text-[30vh] font-black tracking-tighter leading-none"
+                <img
+                    src="/logo-white.png"
+                    alt="SAIDAA"
+                    className="h-[15vh] lg:h-[25vh] xl:h-[30vh] object-contain"
                     style={{
-                        writingMode: 'vertical-rl',
-                        textOrientation: 'mixed',
                         transform: 'rotate(180deg)',
-                        color: 'white',
                     }}
-                >
-                    SAIDA<span className="text-green-500">A</span>
-                </h1>
+                />
             </motion.div>
         </div>
     );
