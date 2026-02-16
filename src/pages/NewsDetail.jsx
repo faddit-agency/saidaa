@@ -31,7 +31,26 @@ The study includes a detailed analysis of the town's urban fabric, as well as a 
 
 const NewsDetail = () => {
     const { id } = useParams();
-    const article = newsData[id] || newsData["1"];
+
+    // Fallback content generator for many IDs
+    const getArticle = (id) => {
+        if (newsData[id]) return newsData[id];
+
+        // Generate generic content for other IDs
+        return {
+            date: '2024. 12. 01.',
+            category: 'NEWS',
+            title: `Project Innovation Update #${id}`,
+            heroImage: `https://images.unsplash.com/photo-${1500648767791 + parseInt(id)}-00dcc91aaaff?q=80&w=2069&auto=format&fit=crop`,
+            content: `This is a detailed overview of project #${id}. SAIDAA continues to push the boundaries of architectural innovation and sustainable design. Our research-driven approach allows us to tackle complex urban challenges with creative and functional solutions.
+
+In this specific initiative, we explored new materials and spatial configurations that prioritize both human experience and ecological responsibility. The result is a testament to our commitment to creating spaces that inspire and endure.
+
+We look forward to sharing more updates as this project progresses into its next phase of development and implementation.`
+        };
+    };
+
+    const article = getArticle(id);
 
     return (
         <div className="pb-24">

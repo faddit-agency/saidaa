@@ -14,21 +14,11 @@ const projectsData = {
                 heading: "Connecting people and ideas",
                 content: `The Bundenblock is a vast complex of buildings situated in Berlin's Tiergarten district and one of the most significant sites of Germany's recent history. Once a place where military resistance against the Nazi regime emerged, it currently houses the Federal Ministry of Defence. This historic ensemble is going to be expanded with three new buildings on the front of the site.
 
-HPP's design incorporates three new buildings alongside the imposing historical structures, which were built from 1910 onwards. The new additions - two administrative buildings and a canteen pavilion - are designed to be innovative, energy-efficient. The entire site will be transformed into a permeable green campus. Its design instills transparency as well as self-confidence, but also light as a preservation of our democratic and vibrant values.
-
-The new buildings will be deliberately set back from the main building, which is situated in a prominent position on Landwehr Canal. Rather than closing off the street block, a gap between the two buildings gives the historical facade more space to present its distinction. At the same time, this arrangement opens up broad views from the public urban space.
-
-At the heart of the newly created campus, two new administrative buildings frame the parade ground on their corner. Their L-shaped layout creates spacious courtyards which, adorned with native trees, perennials, and grasses, offer tranquility and a place for people to meet. The buildings' narrow wings bring the workplace close to the facade, providing daylight, fresh air, and views of the green courtyards and the surrounding area. Photovoltaic systems installed on the green roofs generate sustainable electricity.`
+HPP's design incorporates three new buildings alongside the imposing historical structures, which were built from 1910 onwards. The new additions - two administrative buildings and a canteen pavilion - are designed to be innovative, energy-efficient. The entire site will be transformed into a permeable green campus. Its design instills transparency as well as self-confidence, but also light as a preservation of our democratic and vibrant values.`
             },
             {
                 heading: "We Land Office Building",
-                content: `The Bundenblock is a vast complex of buildings situated in Berlin's Tiergarten district and one of the most significant sites of Germany's recent history. Once a place where military resistance against the Nazi regime emerged, it currently houses the Federal Ministry of Defence. This historic ensemble is going to be expanded with three new buildings on the front of the site.
-
-HPP's design incorporates three new buildings alongside the imposing historical structures, which were built from 1910 onwards. The new additions - two administrative buildings and a canteen pavilion - are designed to be innovative, energy-efficient. The entire site will be transformed into a permeable green campus. Its design instills transparency as well as self-confidence, but also light as a preservation of our democratic and vibrant values.
-
-The new buildings will be deliberately set back from the main building, which is situated in a prominent position on Landwehr Canal. Rather than closing off the street block, a gap between the two buildings gives the historical facade more space to present its distinction. At the same time, this arrangement opens up broad views from the public urban space.
-
-At the heart of the newly created campus, two new administrative buildings frame the parade ground on their corner. Their L-shaped layout creates spacious courtyards which, adorned with native trees, perennials, and grasses, offer tranquility and a place for people to meet. The buildings' narrow wings bring the workplace close to the facade, providing daylight, fresh air, and views of the green courtyards and the surrounding area. Photovoltaic systems installed on the green roofs generate sustainable electricity.`
+                content: `At the heart of the newly created campus, two new administrative buildings frame the parade ground on their corner. Their L-shaped layout creates spacious courtyards which, adorned with native trees, perennials, and grasses, offer tranquility and a place for people to meet. The buildings' narrow wings bring the workplace close to the facade, providing daylight, fresh air, and views of the green courtyards and the surrounding area. Photovoltaic systems installed on the green roofs generate sustainable electricity.`
             }
         ]
     }
@@ -36,7 +26,30 @@ At the heart of the newly created campus, two new administrative buildings frame
 
 const WorksDetail = () => {
     const { id } = useParams();
-    const project = projectsData[id] || projectsData["1"]; // Fallback to first if not found
+
+    const getProject = (id) => {
+        if (projectsData[id]) return projectsData[id];
+
+        // Dynamic fallback for many IDs
+        return {
+            title: `PROJECT INNOVATION #${id}`,
+            location: "GLOBAL",
+            heroImage: `https://images.unsplash.com/photo-${1500648767791 + (parseInt(id) % 1000)}?q=80&w=2069&auto=format&fit=crop`,
+            diagramImage: `https://images.unsplash.com/photo-1518005020250-675f210fe3a2?q=80&w=1974&auto=format&fit=crop`,
+            sections: [
+                {
+                    heading: "Designing for the Future",
+                    content: `Project #${id} represents SAIDAA's ongoing commitment to excellence in architectural design and urban planning. This initiative explores the intersection of technology, sustainability, and human-centric spaces.`
+                },
+                {
+                    heading: "Innovative Spatial Solutions",
+                    content: `The spatial strategy for #${id} emphasizes transparency and connectivity. By utilizing open-plan layouts and strategic glass integrations, we maximize natural light and foster a sense of openness.`
+                }
+            ]
+        };
+    };
+
+    const project = getProject(id);
 
     return (
         <div className="pb-24">
@@ -97,16 +110,18 @@ const WorksDetail = () => {
                 </div>
 
                 {/* Content Section 2 */}
-                <div className="container mx-auto">
-                    <div className="w-full">
-                        <h2 className="text-2xl font-bold mb-8 uppercase tracking-tight">{project.sections[1].heading}</h2>
-                        <div className="text-sm text-muted-foreground leading-[1.8] space-y-6">
-                            {project.sections[1].content.split('\n\n').map((para, i) => (
-                                <p key={i}>{para}</p>
-                            ))}
+                {project.sections[1] && (
+                    <div className="container mx-auto">
+                        <div className="w-full">
+                            <h2 className="text-2xl font-bold mb-8 uppercase tracking-tight">{project.sections[1].heading}</h2>
+                            <div className="text-sm text-muted-foreground leading-[1.8] space-y-6">
+                                {project.sections[1].content.split('\n\n').map((para, i) => (
+                                    <p key={i}>{para}</p>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
             </motion.div>
         </div>
     );

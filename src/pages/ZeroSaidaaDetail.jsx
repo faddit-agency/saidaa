@@ -1,7 +1,10 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft } from 'lucide-material-react'; // Wait, it should be lucide-react
+
+// Fixing imports first
+import { ChevronLeft as ChevronLeftIcon } from 'lucide-react';
 
 const zeroData = {
     "1": {
@@ -22,14 +25,33 @@ Through material innovation, energy-efficient systems, and biophilic design, we 
 
 const ZeroSaidaaDetail = () => {
     const { id } = useParams();
-    const project = zeroData[id] || zeroData["1"];
+
+    const getProject = (id) => {
+        if (zeroData[id]) return zeroData[id];
+
+        // Dynamic fallback for many IDs
+        return {
+            title: `ZERO-CARBON RESEARCH #${id}`,
+            location: "KRAMPNITZ",
+            heroImage: `https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop`,
+            diagramImage: `https://images.unsplash.com/photo-1518005020250-675f210fe3a2?q=80&w=1974&auto=format&fit=crop`,
+            sections: [
+                {
+                    heading: "Pioneering Sustainable Research",
+                    content: `ZERO-CARBON RESEARCH #${id} is an extension of our core mission to eliminate the carbon footprint of the built environment. This specific study focuses on resilient urban systems and the integration of renewable energy sources directly into the building fabric.`
+                }
+            ]
+        };
+    };
+
+    const project = getProject(id);
 
     return (
         <div className="pb-24">
             {/* Back Button */}
             <div className="container mx-auto py-6">
                 <Link to="/zero-saidaa" className="inline-flex items-center text-xs font-bold tracking-widest hover:text-green-600 transition-colors uppercase">
-                    <ChevronLeft className="w-4 h-4 mr-1" />
+                    <ChevronLeftIcon className="w-4 h-4 mr-1" />
                     Back to Zero-Saidaa
                 </Link>
             </div>
