@@ -69,7 +69,7 @@ const Saidaa = () => {
                         key={tab}
                         onClick={() => setActiveTab(tab)}
                         className={cn(
-                            'transition-colors hover:text-foreground whitespace-nowrap uppercase tracking-widest',
+                            'transition-colors hover:text-foreground whitespace-nowrap tracking-widest',
                             activeTab === tab ? 'font-bold text-foreground' : 'text-muted-foreground'
                         )}
                     >
