@@ -166,11 +166,10 @@ const Saidaa = () => {
                                     <div className="absolute inset-0 transition-opacity duration-500 opacity-100 group-hover:opacity-0">
                                         <img src={member.illustration} alt={member.name} className="w-full h-full object-cover" />
                                     </div>
-                                    <div className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
-                                        <img src={member.photo} alt={member.name} className="w-full h-full object-cover brightness-50" />
-                                        <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
-                                            <p className="text-xs font-bold leading-tight mb-1">{member.name}</p>
-                                            <p className="text-[10px] italic leading-tight opacity-80">{member.quote}</p>
+                                    <div className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 bg-black">
+                                        <div className="h-full flex flex-col justify-end p-4 text-white">
+                                            <p className="text-xs font-bold leading-tight mb-2">{member.name}</p>
+                                            <p className="text-[10px] italic leading-tight opacity-70 border-t border-white/20 pt-2">{member.quote}</p>
                                         </div>
                                     </div>
                                 </div>
