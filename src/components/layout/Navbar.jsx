@@ -45,7 +45,11 @@ const Navbar = () => {
                         isHome ? (isOpen ? "flex" : "flex md:hidden") : "flex"
                     )}
                 >
-                    <img src="/logo-white.png" alt="SAIDAA" className={cn("h-4", !isHome && !isOpen && "invert")} />
+                    <img
+                        src={(!isHome && !isOpen) ? "/logo-black.png" : "/logo-white.png"}
+                        alt="SAIDAA"
+                        className="h-4"
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}
