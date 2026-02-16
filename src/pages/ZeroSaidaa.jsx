@@ -55,7 +55,7 @@ const ZeroSaidaa = () => {
             </div>
 
             {/* Project Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
                 {filteredItems.map((item) => (
                     <Link to={`/zero-saidaa/${item.id}`} key={item.id}>
                         <motion.div

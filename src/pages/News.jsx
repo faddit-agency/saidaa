@@ -173,7 +173,7 @@ const News = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
             >
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-8 gap-y-12 md:gap-y-16">
                     {newsItems.map((item, i) => (
                         <Link to={`/news/${item.id}`} key={item.id}>
                             <motion.div
