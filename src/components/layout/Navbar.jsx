@@ -40,7 +40,10 @@ const Navbar = () => {
                 {/* Logo - dynamic version as per user's "opposite" request */}
                 <Link
                     to="/"
-                    className="hover:opacity-80 transition-opacity flex"
+                    className={cn(
+                        "hover:opacity-80 transition-opacity flex",
+                        isHome && "md:hidden"
+                    )}
                 >
                     <img
                         src={isHome ? "/logo-black.png" : "/logo-white.png"}
