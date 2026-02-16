@@ -8,6 +8,7 @@ import Saidaa from '@/pages/Saidaa';
 import ZeroSaidaa from '@/pages/ZeroSaidaa';
 import ZeroSaidaaDetail from '@/pages/ZeroSaidaaDetail';
 import News from '@/pages/News';
+import NewsDetail from '@/pages/NewsDetail';
 import Contact from '@/pages/Contact';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="zero-saidaa" element={<ZeroSaidaa />} />
           <Route path="zero-saidaa/:id" element={<ZeroSaidaaDetail />} />
           <Route path="news" element={<News />} />
+          <Route path="news/:id" element={<NewsDetail />} />
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>

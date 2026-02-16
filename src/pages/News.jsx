@@ -62,38 +62,39 @@ const News = () => {
             >
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                     {newsItems.map((item, i) => (
-                        <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: (i % 3) * 0.1 }}
-                            viewport={{ once: true }}
-                            className="group flex flex-col cursor-pointer"
-                        >
-                            <div className="aspect-[4/3] overflow-hidden bg-muted mb-6">
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                            </div>
-                            <div className="space-y-4">
-                                <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                                    {item.date}
-                                </p>
-                                <h2 className="text-xl font-bold leading-snug tracking-tight group-hover:text-green-600 transition-colors">
-                                    {item.title}
-                                </h2>
-                                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                                    {item.description}
-                                </p>
-                                <div className="pt-2">
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-muted-foreground/30 pb-1 group-hover:border-foreground transition-colors">
-                                        Read more
-                                    </span>
+                        <Link to={`/news/${item.id}`} key={item.id}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: (i % 3) * 0.1 }}
+                                viewport={{ once: true }}
+                                className="group flex flex-col cursor-pointer"
+                            >
+                                <div className="aspect-[4/3] overflow-hidden bg-muted mb-6">
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
                                 </div>
-                            </div>
-                        </motion.div>
+                                <div className="space-y-4">
+                                    <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                                        {item.date}
+                                    </p>
+                                    <h2 className="text-xl font-bold leading-snug tracking-tight group-hover:text-green-600 transition-colors">
+                                        {item.title}
+                                    </h2>
+                                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                                        {item.description}
+                                    </p>
+                                    <div className="pt-2">
+                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-muted-foreground/30 pb-1 group-hover:border-foreground transition-colors">
+                                            Read more
+                                        </span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </Link>
                     ))}
                 </div>
             </motion.div>
