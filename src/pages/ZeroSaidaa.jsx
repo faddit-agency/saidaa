@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 // Expanded Zero-Saidaa Items Data (20 items)
 const zeroItems = [
@@ -30,6 +31,7 @@ const zeroItems = [
 const categories = ['ALL', 'Research', 'Consulting', 'Experiment'];
 
 const ZeroSaidaa = () => {
+    const { t } = useTranslation();
     const [activeCategory, setActiveCategory] = useState('ALL');
 
     const filteredItems = activeCategory === 'ALL'
@@ -49,7 +51,7 @@ const ZeroSaidaa = () => {
                             activeCategory === cat ? 'font-bold text-foreground underline decoration-2 underline-offset-4' : 'text-muted-foreground'
                         )}
                     >
-                        {cat}
+                        {t(`categories.${cat}`)}
                     </button>
                 ))}
             </div>

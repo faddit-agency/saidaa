@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+    const { t } = useTranslation();
+
     return (
         <div className="container mx-auto pt-4 pb-24">
             <motion.div
@@ -35,7 +38,7 @@ const Contact = () => {
                 </div>
 
                 {/* Contact Title */}
-                <h1 className="text-3xl font-bold mb-16 uppercase tracking-tight">Contact</h1>
+                <h1 className="text-3xl font-bold mb-16 uppercase tracking-tight">{t('contact.title')}</h1>
 
                 {/* Info Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
@@ -43,7 +46,7 @@ const Contact = () => {
                     <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div className="space-y-12">
                             <div>
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4">Office</h3>
+                                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4">{t('contact.office')}</h3>
                                 <div className="text-sm text-muted-foreground space-y-1 leading-relaxed">
                                     <p>SAIDAA Arklitekter ApS</p>
                                     <p>Blågårdsgade 8, 2. sal</p>
@@ -55,9 +58,9 @@ const Contact = () => {
                             </div>
 
                             <div>
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4">Business Development</h3>
+                                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4">{t('contact.businessDev')}</h3>
                                 <div className="text-sm text-muted-foreground space-y-4">
-                                    <p>For new business and project inquiries, please contact:</p>
+                                    <p>{t('contact.inquiries')}</p>
                                     <div>
                                         <p className="font-bold text-foreground">Jon Borberg</p>
                                         <p>Business Development Manager</p>
@@ -69,7 +72,7 @@ const Contact = () => {
 
                         <div className="space-y-12">
                             <div>
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4">Bank</h3>
+                                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4">{t('contact.bank')}</h3>
                                 <div className="text-sm text-muted-foreground space-y-1 leading-relaxed">
                                     <p>Vestjysk Bank</p>
                                     <p>Torvet 4-5</p>
@@ -81,9 +84,9 @@ const Contact = () => {
                             </div>
 
                             <div>
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4">Press & Communication</h3>
+                                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4">{t('contact.press')}</h3>
                                 <div className="text-sm text-muted-foreground space-y-4">
-                                    <p>For press and media inquiries, please contact:</p>
+                                    <p>{t('contact.mediaInquiries')}</p>
                                     <div>
                                         <p className="font-bold text-foreground">Liv Elbirk</p>
                                         <p>Senior Communications Manager</p>
@@ -104,7 +107,7 @@ const Contact = () => {
                                 <circle cx="200" cy="150" r="10" fill="red" className="animate-pulse" />
                             </svg>
                             <div className="relative z-10 text-center p-6 bg-black/40 backdrop-blur-sm">
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white underline decoration-red-500 underline-offset-8">Find us in Seoul</h4>
+                                <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white underline decoration-red-500 underline-offset-8">{t('contact.findUs')}</h4>
                             </div>
                         </div>
                     </div>

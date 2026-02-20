@@ -49,7 +49,7 @@ const Home = () => {
                 className="absolute left-0 top-0 h-full hidden md:flex items-center z-10"
             >
                 <h1
-                    className="text-[15vh] lg:text-[25vh] xl:text-[30vh] font-bold tracking-tighter leading-none"
+                    className="text-[15vh] lg:text-[25vh] xl:text-[30vh] font-bold tracking-tighter leading-[0.8]"
                     style={{
                         writingMode: 'vertical-rl',
                         textOrientation: 'mixed',

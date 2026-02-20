@@ -3,17 +3,19 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 const navItems = [
-    { name: 'HOME', path: '/' },
-    { name: 'WORKS', path: '/works' },
-    { name: 'SAIDAA', path: '/saidaa' },
-    { name: 'ZERO-SAIDAA', path: '/zero-saidaa' },
-    { name: 'NEWS', path: '/news' },
-    { name: 'CONTACT', path: '/contact' },
+    { key: 'nav.home', path: '/' },
+    { key: 'nav.works', path: '/works' },
+    { key: 'nav.saidaa', path: '/saidaa' },
+    { key: 'nav.zeroSaidaa', path: '/zero-saidaa' },
+    { key: 'nav.news', path: '/news' },
+    { key: 'nav.contact', path: '/contact' },
 ];
 
 const Navbar = () => {
+    const { t, i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
     const [scrolled, setScrolled] = useState(false);
@@ -26,6 +28,10 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+    };
 
     return (
         <header
@@ -52,22 +58,49 @@ const Navbar = () => {
                     />
                 </Link>
 
-                {/* Desktop Navigation */}
-                <nav className={cn("hidden md:flex space-x-8", isHome && "ml-auto")}>
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.name}
-                            to={item.path}
-                            className={cn(
-                                'text-sm font-medium transition-colors hover:text-green-500',
-                                isHome ? 'text-white' : 'text-foreground',
-                                location.pathname === item.path && 'font-bold'
-                            )}
+                {/* Desktop Navigation Container */}
+                <div className={cn("hidden md:flex items-center gap-8", isHome && "ml-auto")}>
+                    <nav className="flex space-x-8">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.key}
+                                to={item.path}
+                                className={cn(
+                                    'text-sm font-medium transition-colors hover:text-green-500',
+                                    isHome ? 'text-white' : 'text-foreground',
+                                    location.pathname === item.path && 'font-bold'
+                                )}
+                            >
+                                {t(item.key)}
+                            </Link>
+                        ))}
+                    </nav>
+
+                    {/* Language Switcher */}
+                    <div className={cn(
+                        "flex items-center space-x-3 text-xs font-bold border-l pl-8",
+                        isHome ? "text-white border-white/30" : "text-foreground border-foreground/20"
+                    )}>
+                        <button
+                            onClick={() => changeLanguage('ko')}
+                            className={cn("hover:text-green-500 transition-colors", i18n.language === 'ko' && "text-green-500")}
                         >
-                            {item.name}
-                        </Link>
-                    ))}
-                </nav>
+                            KR
+                        </button>
+                        <button
+                            onClick={() => changeLanguage('en')}
+                            className={cn("hover:text-green-500 transition-colors", i18n.language === 'en' && "text-green-500")}
+                        >
+                            EN
+                        </button>
+                        <button
+                            onClick={() => changeLanguage('de')}
+                            className={cn("hover:text-green-500 transition-colors", i18n.language === 'de' && "text-green-500")}
+                        >
+                            DE
+                        </button>
+                    </div>
+                </div>
 
                 {/* Mobile Menu Button */}
                 <button
@@ -93,7 +126,7 @@ const Navbar = () => {
                         <nav className="flex flex-col p-6 space-y-6">
                             {navItems.map((item) => (
                                 <Link
-                                    key={item.name}
+                                    key={item.key}
                                     to={item.path}
                                     className={cn(
                                         'text-2xl font-bold tracking-tighter hover:text-green-500 transition-colors',
@@ -101,9 +134,16 @@ const Navbar = () => {
                                     )}
                                     onClick={() => setIsOpen(false)}
                                 >
-                                    {item.name}
+                                    {t(item.key)}
                                 </Link>
                             ))}
+
+                            {/* Mobile Language Switcher */}
+                            <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                                <button onClick={() => changeLanguage('ko')} className={cn("text-sm font-bold", i18n.language === 'ko' ? "text-green-500" : "opacity-70")}>KOREAN</button>
+                                <button onClick={() => changeLanguage('en')} className={cn("text-sm font-bold", i18n.language === 'en' ? "text-green-500" : "opacity-70")}>ENGLISH</button>
+                                <button onClick={() => changeLanguage('de')} className={cn("text-sm font-bold", i18n.language === 'de' ? "text-green-500" : "opacity-70")}>GERMAN</button>
+                            </div>
                         </nav>
                     </motion.div>
                 )}

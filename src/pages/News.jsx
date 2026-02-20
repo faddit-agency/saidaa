@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const newsItems = [
     {
@@ -166,6 +167,7 @@ const newsItems = [
 ];
 
 const News = () => {
+    const { t } = useTranslation();
     return (
         <div className="container mx-auto pt-4 pb-24">
             <motion.div
@@ -202,7 +204,7 @@ const News = () => {
                                     </p>
                                     <div className="pt-2">
                                         <span className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-muted-foreground/30 pb-1 group-hover:border-foreground transition-colors">
-                                            Read more
+                                            {t('common.readMore')}
                                         </span>
                                     </div>
                                 </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const newsData = {
     "1": {
@@ -30,6 +31,7 @@ The study includes a detailed analysis of the town's urban fabric, as well as a 
 };
 
 const NewsDetail = () => {
+    const { t } = useTranslation();
     const { id } = useParams();
 
     // Fallback content generator for many IDs
@@ -58,7 +60,7 @@ We look forward to sharing more updates as this project progresses into its next
             <div className="container mx-auto py-6">
                 <Link to="/news" className="inline-flex items-center text-xs font-bold tracking-widest hover:text-green-600 transition-colors uppercase">
                     <ChevronLeft className="w-4 h-4 mr-1" />
-                    Back to News
+                    {t('common.backToNews')}
                 </Link>
             </div>
 
@@ -83,7 +85,7 @@ We look forward to sharing more updates as this project progresses into its next
                     <div className="w-full">
                         <div className="flex items-center gap-4 text-[10px] font-black tracking-widest text-muted-foreground uppercase mb-6">
                             <span>{article.date}</span>
-                            <span className="text-green-600">{article.category}</span>
+                            <span className="text-green-600">{t(`categories.${article.category}`)}</span>
                         </div>
                         <h1 className="text-3xl md:text-5xl font-bold mb-12 tracking-tight leading-tight uppercase">
                             {article.title}

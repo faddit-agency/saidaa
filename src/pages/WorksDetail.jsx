@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const projectsData = {
     "1": {
@@ -25,6 +26,7 @@ HPP's design incorporates three new buildings alongside the imposing historical 
 };
 
 const WorksDetail = () => {
+    const { t } = useTranslation();
     const { id } = useParams();
 
     const getProject = (id) => {
@@ -57,7 +59,7 @@ const WorksDetail = () => {
             <div className="container mx-auto py-6">
                 <Link to="/works" className="inline-flex items-center text-xs font-bold tracking-widest hover:text-green-600 transition-colors uppercase">
                     <ChevronLeft className="w-4 h-4 mr-1" />
-                    Back to Works
+                    {t('common.backToWorks')}
                 </Link>
             </div>
 

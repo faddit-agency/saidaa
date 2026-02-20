@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const zeroData = {
     "1": {
@@ -21,6 +22,7 @@ Through material innovation, energy-efficient systems, and biophilic design, we 
 };
 
 const ZeroSaidaaDetail = () => {
+    const { t } = useTranslation();
     const { id } = useParams();
 
     const getProject = (id) => {
@@ -49,7 +51,7 @@ const ZeroSaidaaDetail = () => {
             <div className="container mx-auto py-6">
                 <Link to="/zero-saidaa" className="inline-flex items-center text-xs font-bold tracking-widest hover:text-green-600 transition-colors uppercase">
                     <ChevronLeft className="w-4 h-4 mr-1" />
-                    Back to Zero-Saidaa
+                    {t('common.backToZero')}
                 </Link>
             </div>
 
