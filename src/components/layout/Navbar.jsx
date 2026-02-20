@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
 
@@ -14,24 +14,36 @@ const navItems = [
     { key: 'nav.contact', path: '/contact' },
 ];
 
+const languages = [
+    { code: 'ko', label: 'KR' },
+    { code: 'en', label: 'EN' },
+    { code: 'de', label: 'DE' },
+];
+
 const Navbar = () => {
     const { t, i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+    const [isLangOpen, setIsLangOpen] = useState(false);
     const location = useLocation();
-    const [scrolled, setScrolled] = useState(false);
+    const dropdownRef = useRef(null);
     const isHome = location.pathname === '/';
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsLangOpen(false);
+            }
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
+        setIsLangOpen(false);
     };
+
+    const currentLangLabel = languages.find(l => l.code === (i18n.language?.substring(0, 2) || 'en'))?.label || 'EN';
 
     return (
         <header
@@ -43,7 +55,7 @@ const Navbar = () => {
             )}
         >
             <div className="container mx-auto flex items-center justify-between py-4">
-                {/* Logo - dynamic version as per user's "opposite" request */}
+                {/* Logo */}
                 <Link
                     to="/"
                     className={cn(
@@ -76,29 +88,45 @@ const Navbar = () => {
                         ))}
                     </nav>
 
-                    {/* Language Switcher */}
-                    <div className={cn(
-                        "flex items-center space-x-3 text-xs font-bold border-l pl-8",
-                        isHome ? "text-white border-white/30" : "text-foreground border-foreground/20"
-                    )}>
+                    {/* Language Switcher Dropdown */}
+                    <div className="relative" ref={dropdownRef}>
                         <button
-                            onClick={() => changeLanguage('ko')}
-                            className={cn("hover:text-green-500 transition-colors", i18n.language === 'ko' && "text-green-500")}
+                            onClick={() => setIsLangOpen(!isLangOpen)}
+                            className={cn(
+                                "flex items-center space-x-2 text-xs font-bold transition-all hover:text-green-500 border-l pl-8",
+                                isHome ? "text-white border-white/30" : "text-foreground border-foreground/20"
+                            )}
                         >
-                            KR
+                            <Globe size={14} />
+                            <span>{currentLangLabel}</span>
                         </button>
-                        <button
-                            onClick={() => changeLanguage('en')}
-                            className={cn("hover:text-green-500 transition-colors", i18n.language === 'en' && "text-green-500")}
-                        >
-                            EN
-                        </button>
-                        <button
-                            onClick={() => changeLanguage('de')}
-                            className={cn("hover:text-green-500 transition-colors", i18n.language === 'de' && "text-green-500")}
-                        >
-                            DE
-                        </button>
+
+                        <AnimatePresence>
+                            {isLangOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
+                                    className={cn(
+                                        "absolute top-full right-0 mt-2 py-2 min-w-[80px] shadow-xl border overflow-hidden",
+                                        isHome ? "bg-[#181818] border-white/10" : "bg-white border-border"
+                                    )}
+                                >
+                                    {languages.map((lang) => (
+                                        <button
+                                            key={lang.code}
+                                            onClick={() => changeLanguage(lang.code)}
+                                            className={cn(
+                                                "w-full text-left px-4 py-2 text-[11px] font-bold uppercase tracking-wider hover:bg-green-500/10 transition-colors",
+                                                i18n.language?.substring(0, 2) === lang.code ? "text-green-500" : (isHome ? "text-white/70" : "text-muted-foreground")
+                                            )}
+                                        >
+                                            {lang.label}
+                                        </button>
+                                    ))}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 </div>
 
@@ -138,11 +166,29 @@ const Navbar = () => {
                                 </Link>
                             ))}
 
-                            {/* Mobile Language Switcher */}
-                            <div className="flex items-center gap-4 pt-4 border-t border-white/10">
-                                <button onClick={() => changeLanguage('ko')} className={cn("text-sm font-bold", i18n.language === 'ko' ? "text-green-500" : "opacity-70")}>KOREAN</button>
-                                <button onClick={() => changeLanguage('en')} className={cn("text-sm font-bold", i18n.language === 'en' ? "text-green-500" : "opacity-70")}>ENGLISH</button>
-                                <button onClick={() => changeLanguage('de')} className={cn("text-sm font-bold", i18n.language === 'de' ? "text-green-500" : "opacity-70")}>GERMAN</button>
+                            {/* Mobile Language Switcher - Also using the globe motif */}
+                            <div className="pt-4 border-t border-white/10 flex flex-col space-y-4">
+                                <div className="flex items-center space-x-2 text-xs font-bold tracking-widest opacity-40 uppercase">
+                                    <Globe size={14} />
+                                    <span>Language</span>
+                                </div>
+                                <div className="flex items-center gap-6">
+                                    {languages.map((lang) => (
+                                        <button
+                                            key={lang.code}
+                                            onClick={() => {
+                                                changeLanguage(lang.code);
+                                                setIsOpen(false);
+                                            }}
+                                            className={cn(
+                                                "text-sm font-bold uppercase tracking-widest",
+                                                i18n.language?.substring(0, 2) === lang.code ? "text-green-500" : "opacity-70"
+                                            )}
+                                        >
+                                            {lang.label}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
                         </nav>
                     </motion.div>
